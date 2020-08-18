@@ -1,0 +1,63 @@
+<header class="header" id="header" [class.wide]="user">
+  <div class="extra-header" *ngIf="preHeaderSettings && preHeaderSettings.is_activated === 1" [ngStyle]="{'backgroundColor': preHeaderSettings.hex_color}" [ngClass]="{'no-button': !preHeaderSettings.button_link_title}">
+      <span class="extra-header-title">{{preHeaderSettings.intro_text}}:
+        <a href={{preHeaderSettings.link}} target="_blank">{{preHeaderSettings.link_title}}</a>
+      </span>
+      <a *ngIf="preHeaderSettings.button_link_title" class="button-link" href={{preHeaderSettings.button_link}}
+         target="_blank">{{preHeaderSettings.button_link_title}}
+      </a>
+  </div>
+  <!-- Pre-header -->
+  <div class="container-fluid main-header">
+    <div class="row align-items-center justify-content-between menu-bar">
+      <div *ngIf="!headerButtonsSettings.showSubjectsLogo" class="col-5 px-0 logo">
+        <button *ngIf="headerButtonsSettings.showLandingButton" (click)="openStudyfinder()" class="btn btn-md btn-danger openFilter">Search Program</button>
+        <a *ngIf="!headerButtonsSettings.showLandingButton || !isMobileView" routerLink="/">
+          <div class="logo-image mr-4"></div>
+        </a>
+      </div>
+      <div *ngIf="headerButtonsSettings.showProgramLinkBtn && isMobileView" class="program-link-block">
+        <a (click)="openWebsite(headerButtonsSettings.programLink)" class="website-link" [ngStyle]="{'color': headerButtonsSettings.programLinkBorderColor, 'border': headerButtonsSettings.programLinkBorder}">Course Website</a>
+      </div>
+      <div class="pl-2 col-8 subject-block" *ngIf="headerButtonsSettings.showSubjectsLogo && isMobileView">
+        <div class="icon-lang px-2 ">
+          <img class="subjects-logo lang-image" [src]="headerButtonsSettings.subjectLink" alt="{{headerButtonsSettings.subjectName}}" title="{{headerButtonsSettings.subjectName}}" />
+        </div>
+        <p class=" subject-name">{{headerButtonsSettings.subjectName}}</p>
+      </div>
+
+      <app-menu-list [menuPages]="menuPages"
+                     [role]="role"
+                     [user]="user"></app-menu-list>
+
+      <div class="col text-right ng-star-inserted p-0 pr-2 px-md-2" >
+        <button *ngIf="user" class="profile-btn btn btn-link my-panel d-none d-lg-inline-block">
+          <img alt="profile" src="/assets/images/user-new.svg" />
+          <span class="text-dark small d-block">{{user?.first_name}}</span>
+        </button>
+        <div class="image-block d-inline-block align-middle">
+          <div class="icon-lang px-2 d-inline-block" *ngFor="let parsedLanguage of websiteLanguagesService.parsedLanguages" (click)="selectLanguage(parsedLanguage.code)">
+            <img width="24" height="24" alt="language" class="lang-image" [class.active]="selectedLanguage == parsedLanguage.code" src="{{parsedLanguage.icon}}" />
+          </div>
+        </div>
+
+        <div class="d-inline-block pl-2">
+          <ul *ngIf="!user && !isMobileView" class="list-unstyled align-items-center m-0 m-md-2 d-none d-md-flex">
+            <li class="px-2">
+              <button class="btn btn-link signin-btn" routerLink="/sign-in">{{ 'header.login' | translate }}</button>
+            </li>
+            <li class="px-2">
+              <button class="btn btn-outline-danger signup-btn" routerLink="/sign-up">{{ 'header.signup' | translate }}</button>
+            </li>
+          </ul>
+        </div>
+
+        <app-side-nav [menuPages]="menuPages"
+                      [user]="user"
+                      [role]="role"></app-side-nav>
+
+      </div>
+    </div>
+  </div>
+  <!-- Pre-header -->
+</header>

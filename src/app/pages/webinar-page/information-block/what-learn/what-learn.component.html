@@ -1,0 +1,6 @@
+<p class="about" *ngIf="webinarData?.agenda_overview"><span>{{'webinars.overview' | translate}}</span>  {{webinarData.agenda_overview}} </p>
+<div class="d-flex flex-wrap" *ngIf="webinarData?.agendas.length">
+  <ng-container *ngFor="let agenda of webinarData?.agendas">
+    <p class="program">{{agenda}}</p>
+  </ng-container>
+</div>

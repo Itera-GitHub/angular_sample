@@ -1,0 +1,16 @@
+<div class="video-container">
+  <div class="video-wrapper">
+    <div class="frame-container">
+      <iframe *ngIf="showVideo" id="player" type="text/html"  allow="autoplay; fullscreen"
+              [src]="'https://www.youtube.com/embed/'+videoId+'?autoplay=1' | safeUrl"
+              frameborder="0"></iframe>
+    </div>
+    <button class="video-poster"
+            *ngIf="!showVideo"
+            (click)="playVideo()"
+            [ngStyle]="{'background-image': videoPreview ? 'url('+videoPreview+')' : 'url(assets/images/webinar-default-preview.jpg)'}"
+            >
+            Play video
+    </button>
+  </div>
+</div>

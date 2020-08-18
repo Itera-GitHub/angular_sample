@@ -1,0 +1,7 @@
+<div id="main">
+  <main-header [hidden]="data?.noHeader"></main-header>
+  <div id="main-page-content">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+  <main-footer *ngIf="data && !data?.noFooter"></main-footer>
+</div>

@@ -1,0 +1,7 @@
+<div class="mini-banner d-flex flex-column text-decoration-none">
+   <div class="overlay"></div>
+   <a [routerLink]="banner?.link">
+      <h3 class="h1 m-0">{{ 'landing.'+title | translate}}</h3>
+   </a>
+   <img alt="Study Field" [defaultImage]="'/assets/images/default-img.png'" [lazyLoad]="banner?.image"/>
+</div>

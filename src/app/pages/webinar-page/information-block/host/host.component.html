@@ -1,0 +1,28 @@
+<div class="host-block">
+  <app-image [url]="_host.avatar_path" [alt]="'host'">
+    <cl-image
+      public-id="{{_host.avatar_path}}"
+      loading="lazy">
+      <cl-transformation quality="auto:good">
+      </cl-transformation>
+      <cl-transformation
+        height="140"
+        width="140"
+        crop="fill">
+      </cl-transformation>
+    </cl-image>
+  </app-image>
+  <p class="role">{{_host.role}}</p>
+  <p class="name-country">
+    <span class="name">{{_host.name}}</span>
+    <img *ngIf="countryImage" [src]="'assets/images/countries-flags/'+countryImage"
+         alt="{{_host?.country}}" />
+  </p>
+  <p class="position">{{_host.position}}</p>
+  <div class="work-experience-block">
+    <p class="title">Work experience:</p>
+    <p class="my-0 description" [innerHTML]="_host.work_experience"></p>
+    <p class="title mt-4">Degree:</p>
+    <p class="my-0 description" [innerHTML]="_host.degree"></p>
+  </div>
+</div>

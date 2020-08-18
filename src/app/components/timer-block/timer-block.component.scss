@@ -1,0 +1,40 @@
+.time-separator {
+  margin: 2rem 0;
+}
+
+.timer-block {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  background-color: rgba(231,228,228, .2);
+  border: .1rem solid rgba(158,152,152, .2);
+  border-radius: .5rem;
+  &:after {
+    content: ':';
+    position: absolute;
+    right: -1.5rem;
+    bottom: 2rem;
+    font-weight: 500;
+    font-size: 1.7rem;
+  }
+
+  &.last-item {
+    &:after {
+      content: none;
+    }
+  }
+
+  .time {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 6rem;
+    text-align: center;
+  }
+}
+.timer-block-defintion {
+  margin: .5rem 0 0 0;
+  font-size: 1.2rem;
+  color: #9e9898;
+  text-align: center;
+}

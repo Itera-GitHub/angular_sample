@@ -1,0 +1,15 @@
+<p class="about" [innerHTML]="webinarData.description"></p>
+<ng-container *ngIf="webinarData?.target_groups?.length">
+  <p class="targets-title">{{'webinars.targetTitle' | translate}}</p>
+  <div class="d-flex justify-content-between flex-wrap">
+    <ng-container *ngFor="let target of webinarData?.target_groups">
+      <div class="target">
+        <div class="d-flex align-items-center mb-3">
+          <img src="assets/icons/tick.svg" alt="tick">
+          <p class="title my-0">{{target.title}}</p>
+        </div>
+        <p class="subtitle my-0">{{target.description}}</p>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

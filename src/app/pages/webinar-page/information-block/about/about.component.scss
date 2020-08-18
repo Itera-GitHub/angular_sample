@@ -1,0 +1,38 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.about {
+  font-size: 1.4rem;
+  line-height: 1.43;
+  color: #5f5c5c;
+  text-align: justify;
+}
+
+.targets-title {
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.target {
+  width: 32rem;
+  margin-bottom: 2rem;
+  background-color: #e7e4e4;
+  padding: 2.5rem 3rem;
+  border: .1rem solid rgba(158,152,152, .2);
+  border-radius: 1rem;
+  
+  .title {
+    margin-left: 1rem;
+    font-weight: 500;
+  }
+  .subtitle {
+    color: #5f5c5c;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .target {
+    width: 100%;
+  }
+}

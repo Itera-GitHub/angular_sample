@@ -1,0 +1,37 @@
+
+.mini-banner {
+  color: #fff;
+  border-radius: 10px;
+  overflow:hidden;
+  position:relative;
+  height: 97%;
+  justify-content: center;
+  .overlay {
+    display:block;
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    content:'';
+    background:rgba(#000, 0.5);
+    z-index: 1;
+  }
+  * {
+    color: inherit;
+    position:relative;
+  }
+  a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-decoration: none;
+    z-index: 2;
+    h3 {
+      text-transform:capitalize;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
+}

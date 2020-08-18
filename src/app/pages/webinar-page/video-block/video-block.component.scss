@@ -1,0 +1,113 @@
+.video-container {
+  position: relative;
+}
+
+.frame-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56%;
+}
+
+iframe, video {
+  position: absolute;
+  height: 101%;
+  width: 101%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 1rem;
+  min-height: auto;
+}
+
+.video-poster {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-size: cover;
+  text-indent: -999em;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 800ms, height 0s;
+  transition-delay: 0s, 0s;
+  border-radius: 1rem;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8rem;
+    height: 8rem;
+    margin: -4rem 0 0 -4rem;
+    border-radius: 100%;
+    transition: border-color 300ms;
+    background: rgba(222, 222, 222, 0.47);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin: -2rem 0 0 -1rem;
+    border-left: 2.6rem solid #fff;
+    border-top: 1.5rem solid transparent;
+    border-bottom: 1.5rem solid transparent;
+    transition: border-color 300ms;
+    border-radius: .2rem;
+  }
+  &:hover,
+  &:focus {
+    &:before {
+      cursor: pointer;
+      background: rgba(222, 222, 222, 0.6);
+    }
+    &:after {
+      cursor: pointer;
+    }
+  }
+}
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 1rem 0 0 0;
+}
+
+.duration {
+  margin: 1rem 0 0 0;
+  color: #fff;
+  font-size: 1.2rem;
+  background-color: #ed766e;
+}
+
+.description {
+  margin-top: .5rem;
+  color: #5f5c5c;
+}

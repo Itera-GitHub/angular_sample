@@ -1,0 +1,63 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+<div class="page" *ngIf="!isLoading">
+
+  <app-sorry *ngIf="!webinarIsActive" [webinar]="webinarData"></app-sorry>
+
+  <div class="container mb-5" *ngIf="!webinarData">
+    <app-upcoming-webinars [watchTranslation]="false"></app-upcoming-webinars>
+  </div>
+
+  <ng-container *ngIf="webinarData">
+    <div class="container">
+      <div class="d-flex header-wrapper">
+        <div class="description-block">
+          <div class="d-flex">
+            <img *ngFor="let language of webinarData?.languages"
+                 [src]="'assets/images/countries/'+languages[language?.code]"
+                 alt="language" class="language-icon" />
+            <p class="language"><span>{{'webinars.freeWebinar' | translate}}</span></p>
+          </div>
+          <h1 class="webinar-topic">{{webinarData.title}}</h1>
+          <p class="subtitle">{{webinarData.sub_title}}</p>
+          <div class="timer">
+            <ng-container *ngIf="time | async as timeElements">
+              <ng-container *ngFor="let timeElement of timeElements; let last = last">
+                <app-timer-block [time]="timeElement" [isLastItem]="last"></app-timer-block>
+              </ng-container>
+            </ng-container>
+          </div>
+          <div class="webinar-details mt-5">
+            <img src="assets/icons/calendar.svg" alt="calendar" />
+            <p class="webinar-data">{{userDate}} ({{userTimezone}} Time)</p>
+          </div>
+          <div class="d-flex mt-4">
+            <div class="webinar-details">
+              <img src="assets/icons/clock.svg" alt="clock" />
+              <p class="webinar-data">{{webinarData.duration_min}} <span>{{'webinars.minutes' | translate}}</span></p>
+            </div>
+            <div class="webinar-details ml-4">
+              <img src="assets/icons/camera.svg" alt="Camera" />
+              <p class="webinar-data"><span>{{'webinars.viaZoom' | translate}}</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="host-block">
+          <img src={{mainHost?.webinar_avatar_path}} alt="Main host" class="host-image" />
+        </div>
+      </div>
+    </div>
+    <div id="registrationBlock">
+      <app-registration-block [webinarId]="webinarData.id" (registerWebinar)="register()"></app-registration-block>
+    </div>
+    <div class="container second-part" [ngClass]="{'pt-0': !webinarData.youtube_video_id}">
+
+      <app-video-block *ngIf="webinarData.youtube_video_id" [videoId]="webinarData.youtube_video_id" [videoPreview]="webinarData.youtube_video_preview_path"></app-video-block>
+
+      <app-information-block [webinarData]="webinarData" [faqs]="faqs"></app-information-block>
+
+    </div>
+  </ng-container>
+
+</div>
+
+<app-footer-actions *ngIf="webinarData"></app-footer-actions>

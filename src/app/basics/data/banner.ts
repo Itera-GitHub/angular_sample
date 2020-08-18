@@ -1,0 +1,53 @@
+export const bannersList = [
+  {
+    link: '/study-fields/arts-design',
+    image: '/assets/images/landing/arts.png',
+		cloud_image: 'arts_v4shn2',
+    translateName: 'studyFieldArt',
+    name: 'Arts & Design',
+  },
+  {
+    link: '/study-fields/business-economics-law',
+    image: '/assets/images/landing/economics.png',
+		cloud_image: 'economics_qbsq1o',
+    translateName: 'studyFieldEconomics',
+    name: 'Business, Economics & Law',
+  },
+  {
+    link: '/study-fields/engineering',
+    image: '/assets/images/landing/engineering.png',
+		cloud_image: 'engineering_yoov4s',
+    translateName: 'studyFieldEngineering',
+    name: 'Engineering',
+  },
+  {
+    link: '/study-fields/humanities',
+    image: '/assets/images/landing/humanities.png',
+		cloud_image: 'humanities_mfmits',
+    translateName: 'studyFieldHumanities',
+    name: 'Humanities',
+  },
+  {
+    link: '/study-fields/medicine-health',
+    image: '/assets/images/landing/medicine.png',
+		cloud_image: 'medicine_lbqulw',
+    translateName: 'studyFieldMedicine',
+    name: 'Medicine & Health',
+  },
+  {
+    link: '/study-fields/natural-sciences-mathematics',
+    query_params: {sf:6},
+    image: '/assets/images/landing/mathematics.png',
+		cloud_image: 'mathematics_stwfgw',
+    translateName: 'studyFieldMathematics',
+    name: 'Natural Sciences & Mathematics',
+  },
+  {
+    link: '/study-fields/social-sciences',
+    query_params: {sf:7},
+    image: '/assets/images/landing/social.png',
+		cloud_image: 'social_arczke',
+    translateName: 'studyFieldSocial',
+    name: 'Social Sciences',
+  },
+];

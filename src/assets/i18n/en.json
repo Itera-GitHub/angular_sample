@@ -1,0 +1,13 @@
+{
+  "general" : {
+    "continueFacebook" : "Continue with Facebook",
+    "continueGoogle" : "Continue with Google",
+    "agreeTerms" : "I agree to the ",
+    "terms" : "Terms of Use",
+    "and" : " and "
+  },
+  "header" : {
+    "login" : "Login",
+    "signup" : "Sign Up"
+  }
+}

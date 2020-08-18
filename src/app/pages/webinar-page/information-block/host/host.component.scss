@@ -1,0 +1,76 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.host-block {
+  width: 32rem;
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+
+  .role {
+    margin: 4rem 0 0 0;
+    font-size: 1.3rem;
+    color: #ed766e;
+  }
+
+  .name {
+    font-size: 1.7rem;
+    font-weight: 500;
+    padding-right: .5rem;
+  }
+
+  .position {
+    font-size: 1.3rem;
+  }
+
+  .work-experience-block {
+    margin-top: 2rem;
+    width: 32rem;
+    padding: 1.2rem 1.5rem 2rem 1.5rem;
+    border: .1rem solid rgba(158,152,152, .2);
+    border-radius: 1rem;
+
+    .title {
+      margin: 0 0 .5rem 0;
+      font-size: 1.3rem;
+      color: #9e9898;
+    }
+
+    .description {
+      font-size: 1.3rem;
+      color: rgba(38,42,48, .75);
+      line-height: 1.37;
+    }
+  }
+}
+:host ::ng-deep app-image {
+  img {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    border: .5rem solid #e7e4e4;
+    object-fit: cover;
+    @include media-breakpoint-down(sm) {
+      width: 14rem;
+      height: 14rem;
+    }
+  }
+}
+@include media-breakpoint-down(sm) {
+  .host-block {
+    width: 100%;
+    text-align: center;
+
+    .role {
+      margin-top: 2rem;
+    }
+
+    .name-country, .position {
+      margin: .5rem 0;
+    }
+
+    .work-experience-block {
+      display: none;
+    }
+  }
+}

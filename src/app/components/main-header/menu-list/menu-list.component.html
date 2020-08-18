@@ -1,0 +1,40 @@
+<nav class="d-none d-lg-block col navigation pl-0">
+  <ul class="navigation-menu list-unstyled d-flex justify-content-left">
+    <li *ngIf="user && user.is_admin_zone_user" class="nav-item m-0">
+      <a mat-button href="/admin/study-programs" [ngClass]="{'active': url.includes('admin')}">Admin Zone</a>
+    </li>
+    <ng-container *ngIf="_menuPages?.length">
+      <li class="nav-item m-0" *ngFor="let menuPage of _menuPages">
+        <ng-container *ngIf="!menuPage?.authorized_only || (menuPage?.authorized_only && user?.name && role == 'student')">
+          <button *ngIf="!menuPage?.children?.length" mat-button [routerLink]="menuPage?.url"
+                  [ngClass]="{'active': isActiveMenuItem(menuPage?.url)}">{{menuPage?.name}}</button>
+          <button *ngIf="menuPage?.children?.length"
+                  mat-button [matMenuTriggerFor]="children"
+                  [ngClass]="{'active': isActiveSubMenuItem(menuPage?.children)}">{{menuPage?.name}}</button>
+          <mat-menu #children="matMenu">
+            <ng-container *ngFor="let firstChild of menuPage?.children">
+
+              <ng-container *ngIf="firstChild?.children?.length; else simple">
+                <button mat-menu-item [matMenuTriggerFor]="child"
+                        [ngClass]="{'active': isActiveSubMenuItem(firstChild?.children)}">
+                  {{firstChild?.name}}</button>
+                <mat-menu #child="matMenu">
+                  <button *ngFor="let childOfChild of firstChild?.children"
+                          [routerLink]="childOfChild?.url"
+                          [ngClass]="{'active': isActiveMenuItem(childOfChild?.url)}"
+                          class="child-element" mat-menu-item>{{childOfChild?.name}}</button>
+                </mat-menu>
+              </ng-container>
+              <ng-template #simple>
+                <button [routerLink]="firstChild?.url"
+                        [ngClass]="{'active': isActiveMenuItem(firstChild?.url)}"
+                        class="child-element" mat-menu-item>{{firstChild?.name}}</button>
+              </ng-template>
+
+            </ng-container>
+          </mat-menu>
+        </ng-container>
+      </li>
+    </ng-container>
+  </ul>
+</nav>

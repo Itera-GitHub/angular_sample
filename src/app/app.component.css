@@ -1,0 +1,18 @@
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(248, 248, 248, 0.9);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+}
+.loading-shade .loader {
+  margin-top: 23em;
+}
+.loading-shade img {
+  height: 4em;
+  width: 4em;
+}

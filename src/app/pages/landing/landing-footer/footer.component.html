@@ -1,0 +1,45 @@
+<footer class="footer">
+  <div class="footer-container">
+    <img [defaultImage]="'/assets/images/default-transparent.png'" class="background-logo" [lazyLoad]="'/assets/images/bg-footer.png'"/>
+
+      <div class="footer-row row justify-content-between text-center text-md-left">
+        <div class="col-md-auto align-self-center">
+          <img [defaultImage]="'/assets/images/default-img.png'" class="white-logo" [lazyLoad]="'/assets/images/logo.svg'" />
+        </div>
+        <div class="col-md-4">
+          <p>{{ 'footer.title' | translate }}</p>
+          <p>{{ 'footer.description' | translate }}</p>
+        </div>
+        
+        <div class="col-md-auto">
+          <h3>Legal</h3>
+          <ul class="list-unstyled mx-0 mb-5"> 
+            <li class="mb-2"><a routerLink="/privacy-policy">{{ 'footer.privacy' | translate }}</a></li>
+            <li class="mb-2"><a routerLink="/terms">{{ 'footer.terms' | translate }}</a></li>
+            <li class="mb-2"><a routerLink="/impressum">{{ 'footer.imprint' | translate }}</a></li>
+          </ul>
+          <ul class="list-inline list-unstyled m-0 social">
+            <li class="d-inline-block pr-3">
+              <a href="" rel="noreferrer" aria-label="facebook" target="_blank">
+                <i class="icon-facebook-o" aria-label="facebook"></i></a>
+            </li>
+            <li class="d-inline-block pr-3">
+              <a href="" rel="noreferrer" aria-label="instagram" target="_blank">
+                <i class="icon-instagram-o" aria-label="instagram"></i></a>
+            </li>
+            <li class="d-inline-block pr-3">
+              <a href="" rel="noreferrer" aria-label="youtube" target="_blank">
+                <i class="icon-youtube-o" aria-label="youtube"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <div class="copyright text-center">
+    <div class="container">
+      Copyright © GmbH. 2019/20 <br />
+    </div>
+  </div>
+  
+</footer>
+

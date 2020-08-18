@@ -1,0 +1,40 @@
+<div class="info-block-wrapper">
+  <p class="block-title">{{'webinars.moreWebinar' | translate}}</p>
+  <div class="data-block">
+    <app-about [webinarData]="webinarData"></app-about>
+  </div>
+</div>
+<div class="info-block-wrapper" *ngIf="webinarData?.agenda_overview || webinarData?.agendas?.length">
+  <p class="block-title">{{'webinars.learnWebinar' | translate}}</p>
+  <div class="data-block">
+    <app-what-learn [webinarData]="webinarData"></app-what-learn>
+  </div>
+</div>
+<div class="info-block-wrapper">
+  <p class="block-title">{{'webinars.hostsWebinar' | translate}}</p>
+  <div class="data-block">
+    <div class="d-flex justify-content-between flex-wrap">
+      <ng-container *ngFor="let host of webinarData?.hosts">
+        <app-host [host]="host"></app-host>
+      </ng-container>
+    </div>
+    <div class="info">
+      <img src="assets/icons/chat.svg" alt="chat" />
+      <p class="text">{{'webinars.bestThing' | translate}}<br>
+        {{'webinars.chatWebinar' | translate}} </p>
+    </div>
+  </div>
+</div>
+<div class="info-block-wrapper faq-block" *ngIf="faqs?.length">
+  <p class="block-title">{{'webinars.faq' | translate}}</p>
+  <div class="data-block">
+    <ng-container *ngFor="let faq of faqs">
+      <app-webinar-faq-block [question]="faq"></app-webinar-faq-block>
+    </ng-container>
+  </div>
+</div>
+<div class="buttons-wrapper">
+  <a [routerLink]="['/webinars']" class="btn btn-white">{{'webinars.seeAllUpcoming' | translate}}</a>
+  <button *ngIf="user?.first_name" class="btn btn-danger ml-4" (click)="scrollToRegistrationBlock()">{{'webinars.saveMeUp' | translate}}</button>
+  <button *ngIf="!user?.first_name" class="btn btn-danger ml-4" (click)="scrollToRegistrationBlock()">{{'webinars.signMeUp' | translate}}</button>
+</div>

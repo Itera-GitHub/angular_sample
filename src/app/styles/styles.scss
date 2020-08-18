@@ -1,0 +1,134 @@
+@import "variables";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+@import "~bootstrap/scss/bootstrap-grid";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/utilities/text";
+
+/* Custom */
+@import "reset";
+@import "form";
+@import "modal";
+@import "tabs";
+@import "global"; 
+
+html {
+  font-family: $mainfont;
+  font-size: 62.5%;
+  color:$main;
+  .mat-menu-panel.customize {
+    max-width: 330px !important;
+  }
+}
+body {
+  font-family: $mainfont;
+  font-size:1.5rem;
+  background:$background;
+}
+#main {
+  position: relative;
+  min-width: 320px;
+  display:flex;
+  flex-direction: column;
+  width:100%;
+}
+#main-page-content {
+  min-height: calc(100vh - 314px);
+}
+
+.landing {
+  background-color: $background;
+}
+router-outlet + .ng-star-inserted {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+mat-tooltip-component {
+  .mat-tooltip {
+    background: $link;
+    margin: 0;
+  }
+}
+
+.h-100 { height:100%;}
+.overflow-hidden { overflow:hidden;}
+
+.s-admin {
+  flex: 1;
+  min-height: calc(100vh - 108px);
+}
+img.icon {
+  max-width:50px !important;
+}
+.text-bold {
+  font-weight: bold;
+}
+
+.page-terms {
+  h1 { font-size:2.5rem;}
+  font-size:1.4rem;
+  line-height:1.8;
+  color:$sub;
+  a {
+    word-break: break-word;
+  }
+  h2 {
+    margin:4rem 0;
+     + p { margin-top:0;}
+  }
+  .container {
+    @include media-breakpoint-up(md) {
+      max-width:670px;
+    }
+    .container {     
+      padding:0;
+    }
+  }
+  .date {
+    h2 {
+      margin:0;
+      font-size:13px;
+      font-weight:400;
+      margin-top:2rem;
+      @include media-breakpoint-up(md) {
+        margin-top:-2rem;
+      }
+    }
+  }
+  p {
+    strong:first-child:last-child { font-size:1.5rem; color:$main; display:block; margin-bottom: -1em;}
+  }
+  .s-admin { padding:0;}
+  hr { margin:5rem 0;}
+}
+.d-inline-block {
+  display: inline-block !important;
+}
+.noselect {
+   -webkit-touch-callout: none; /* iOS Safari */
+   -webkit-user-select: none; /* Safari */
+   -moz-user-select: none; /* Old versions of Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+   user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+ }
+.cdk-global-scrollblock {
+  position: initial !important;
+}
+.align-baseline    { vertical-align: baseline !important; } // Browser default
+.align-top         { vertical-align: top !important; }
+.align-middle      { vertical-align: middle !important; }
+.align-bottom      { vertical-align: bottom !important; }
+.align-text-bottom { vertical-align: text-bottom !important; }
+.align-text-top    { vertical-align: text-top !important; }
+
+.rounded-0 {
+  border-radius: 0 !important;
+}

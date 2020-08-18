@@ -1,0 +1,6 @@
+<div>
+  <div class="timer-block" [ngClass]="{'last-item': isLastItem}">
+    <p class="time">{{_time.time | timeTransform}}</p>
+  </div>
+  <p class="timer-block-defintion">{{_time.value}}</p>
+</div>

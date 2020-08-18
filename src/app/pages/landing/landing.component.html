@@ -1,0 +1,113 @@
+<app-json-ld [itemLD]="productLD"></app-json-ld>
+<section class="page">
+  <div class="hero py-3" id="hero">
+    <div class="container d-flex flex-column justify-content-center h-100">
+      <div class="row justify-content-center justify-content-xl-start">
+        <div class="col-md-6 col-lg-5 hero-holder">
+          <div class="block">
+            <h1 class="title">{{'landing.title' | translate:{count:landingData?.study_programs_count} }}</h1>
+            <app-study-finder-widget
+                (updateStudyProgramsCount)="getQueryParamsForWidget($event)"
+                (updateSearchResults)="navigateToResults($event)"
+                (widgetFilterChanged)="sendAnalytics($event)"
+                [updateUrl]="false"
+                [queryParams]="{}"
+              ></app-study-finder-widget>
+          <a (click)="navigateToResults({initialize: false})" class="btn btn-primary btn-block btn-lg btn-action">{{'landing.buttonSearch' | translate}}</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="section database">
+    <div class="container">
+      <h2 class="h1 heading">{{'landing.databaseTitle' | translate}}</h2>
+      <div class="row">
+        <div class="col-sm my-2 item">
+          <div class="border rounded data-holder d-flex flex-column h-100">
+              <div class="top">
+                <i class="icon-university text-primary display-4"></i>
+                <div class="display-3 my-2">{{landingData?.universities_count}}</div>
+                <div class="title h3">{{'landing.databaseUniversities' | translate}}</div>
+              </div>
+              <a routerLink="/universities" class="mt-auto see-more text-primary text-decoration-none">
+                <i class="icon-default-arrow-right"></i>
+                {{'landing.databaseSeeAllUniversities' | translate}}
+              </a>
+          </div>
+        </div>
+        <div class="col-sm my-2 item">
+          <div class="border rounded data-holder d-flex flex-column h-100">
+            <div class="top">
+              <i class="icon-euro text-primary display-4"></i>
+              <div class="display-3 my-2">{{landingData?.no_tuitions_percent}}</div>
+              <div class="title h3">{{'landing.databaseWithoutTuition' | translate}}</div>
+            </div>
+            <a (click)="openWithNoTuition()" class="mt-auto see-more text-primary text-decoration-none">
+              <i class="icon-default-arrow-right"></i>
+              {{'landing.databaseSeeWithoutTuition' | translate}}
+            </a>
+          </div>
+        </div>
+        <div class="col-md my-2 item">
+          <div class="border rounded data-holder d-flex flex-column  h-100">
+            <div class="top">
+              <i class="icon-corner-cap-d text-primary display-4"></i>
+              <div class="display-3 my-2">{{landingData?.study_programs_count}}</div>
+              <div class="title h3">{{'landing.databaseEnglishPrograms' | translate}}</div>
+            </div>
+            <a routerLink="/studyfinder" [queryParams]="{p: 1, pp: 20, sort: 'application_deadline', dir: 'ASC'}" class="mt-auto see-more text-primary text-decoration-none">
+              <i class="icon-default-arrow-right"></i>
+              {{'landing.databaseSeeAllPrograms' | translate}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section overflow-hidden">  
+    <div class="container">
+      <h2 class="mb-2 h1 heading">{{'landing.abroadTitle' | translate}}</h2>
+      <a routerLink="/studyfinder" [queryParams]="{p: 1, pp: 20, sort: 'application_deadline', dir: 'ASC'}" class="see-more text-primary text-decoration-none">
+        <i class="icon-default-arrow-right"></i>
+        {{'landing.abroadSeeAllPrograms' | translate:{count: landingData?.cities_count} }}
+      </a>
+    </div>
+    <div class="carousel" *ngIf="cities.length">
+      <div class="container">
+        <div class="block-center">
+          <carousel>
+            <ng-container *ngFor="let city of cities; let i=index">
+              <ng-container *carouselItem>
+                <app-carousel-item [cityData]="city" [buttonText]="'abroadSeeAll' | translate" [cityName]="city.translateName"></app-carousel-item>
+              </ng-container>
+            </ng-container>
+          </carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <h2 class="mb-2 h1 heading">{{'landing.studyFieldTitle' | translate}}</h2>
+      <a  routerLink="/studyfinder" [queryParams]="{p: 1, pp: 20, sort: 'application_deadline', dir: 'ASC'}" class="see-more text-primary text-decoration-none">
+        <i class="icon-default-arrow-right"></i>{{'landing.studyFieldSeeAll' | translate}}
+      </a>
+      <div class="block-center mt-5" *ngIf="banners?.length">
+        <div class="row row-10">
+          <div class="col-sm-6 col-lg-4 my-3" *ngFor="let banner of banners; let i=index">
+            <app-mini-banner [banner]="banner" [title]="banner.translateName"></app-mini-banner>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <app-news-articles *ngIf="landingData?.more_articles?.length" [title]="'News & Articles'" [moreArticles]="landingData?.more_articles"></app-news-articles>
+    </div>
+  </div>
+</section>
+<landing-footer></landing-footer>
+

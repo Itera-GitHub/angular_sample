@@ -1,0 +1,13 @@
+<img alt="City" [defaultImage]="'/assets/images/default-img.png'" [lazyLoad]="cityData?.image"/>
+<div class="content-holder pt-4">
+  <div class="title py-3">
+    <strong>{{ 'landing.'+ cityName | translate}}</strong>
+    <a [routerLink]="cityData?.link" class="see-more ml-2 text-primary text-decoration-none">
+      <i class="icon-default-arrow-right"></i>
+      <span>{{ 'landing.'+ buttonText | translate}}</span>
+    </a>
+  </div>
+  <div class="text small">
+    <a class="link-text" *ngFor="let uni of cityData?.universities; let i=index" [routerLink]="uni?.link">{{uni?.name}}{{i < cityData?.universities?.length-1 ? ', ' : ''}}</a>
+  </div>
+</div>
